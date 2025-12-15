@@ -120,7 +120,6 @@ export const actualizarCalificacionAdmin = async (req, res) => {
 
         const calificacion = await Calificacion.findOne({
             where: { materia_id: materiaId, alumno_id: alumnoId },
-            // paranoid: false // Buscar incluso si fue soft-deleted? Generalmente no se edita lo borrado sin restaurar primero.
         });
 
         if (!calificacion) {

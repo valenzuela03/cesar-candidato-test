@@ -48,7 +48,6 @@ app.use('/api', routes);
 async function main() {
   try {
     await sequelize.authenticate();
-    // await sequelize.sync({ alter: true }); // Desactivamos sync automático en favor de migraciones
     console.log('Base de datos conectada.');
     const PORT = process.env.PORT || 3000;
     console.log(`Servidor corriendo en: ${PORT}`);
