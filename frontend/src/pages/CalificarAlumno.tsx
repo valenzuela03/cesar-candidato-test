@@ -76,16 +76,23 @@ export default function CalificarAlumno() {
                         <div>
                             <label htmlFor="nota" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nota (0 - 10)</label>
                             <input
-                                type="number"
-                                name="nota"
-                                id="nota"
-                                step="0.1"
-                                min="0"
-                                max="10"
                                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required
                                 value={nota}
-                                onChange={e => setNota(e.target.value)}
+                                onChange={e => {
+                                    const val = e.target.value;
+                                    if (val === '') {
+                                        setNota('');
+                                        return;
+                                    }
+                                    // Validar que sea numero (acepta decimales)
+                                    if (!/^\d*\.?\d*$/.test(val)) return;
+
+                                    const num = parseFloat(val);
+                                    if (!isNaN(num) && num >= 0 && num <= 10) {
+                                        setNota(val);
+                                    }
+                                }}
                             />
                         </div>
                         <div>

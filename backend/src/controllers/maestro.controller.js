@@ -9,7 +9,7 @@ import Inscripcion from '../models/Inscripcion.js';
 export const getMateriasAsignadas = async (req, res) => {
     try {
         const maestroId = req.usuario.id;
-        console.log('Buscando materias para maestroId:', maestroId);
+        console.log('Buscando materias para maestro:', maestroId);
 
         const materias = await Asignacion.findAll({
             where: { maestro_id: maestroId },
@@ -34,21 +34,20 @@ export const getAlumnosGlobal = async (req, res) => {
     try {
         const maestroId = req.usuario.id;
 
-        const materiasIds = (await Asignacion.findAll({ where: { maestro_id: maestroId } }))
-            .map(a => a.materia_id);
+        const asignacionesIds = (await Asignacion.findAll({ where: { maestro_id: maestroId } }))
+            .map(a => a.id);
 
         const inscripciones = await Inscripcion.findAll({
-            where: { materia_id: materiasIds },
-            include: [{ model: Alumno }]
+            where: { asignacion_id: asignacionesIds },
+            include: [{ model: Alumno, as: 'alumno' }]
         });
 
-        // Filtrar duplicados si un alumno esta en varias materias del mismo maestro
-        /*const alumnosMap = new Map();
+        const alumnosMap = new Map();
         inscripciones.forEach(i => {
-            if (i.Alumno) alumnosMap.set(i.Alumno.id, i.Alumno);
-        });*/
+            if (i.alumno) alumnosMap.set(i.alumno.id, i.alumno);
+        });
 
-        res.json(Array.from(alumnosMap.values())); // 
+        res.json(Array.from(alumnosMap.values()));
 
     } catch (error) {
         console.error(error);

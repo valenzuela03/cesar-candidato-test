@@ -43,7 +43,7 @@ Una vez que los contenedores estén corriendo, inicializa la base de datos:
     ```
 2.  Ejecuta los seeders:
     ```bash
-    docker exec -it backend npx sequelize-cli db:seed:all
+    docker exec -it backend npm run seed
     ```
 
     para quitar docker:

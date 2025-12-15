@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+// Configuración de la base de datos con variables de entorno
 module.exports = {
     development: {
         username: process.env.DB_USER || 'postgres',

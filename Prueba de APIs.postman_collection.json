@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "9c9183e4-2b89-4253-8f41-0a2f319bc714",
+		"name": "Prueba de APIs",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50762867",
+		"_collection_link": "https://cesar-valenzuela-3c-9978683.postman.co/workspace/Cesar-Valenzuela's-Workspace~6bf75367-c48b-46fc-8db1-1fcd0e2d8d4d/collection/50762867-9c9183e4-2b89-4253-8f41-0a2f319bc714?action=share&source=collection_link&creator=50762867"
+	},
+	"item": [
+		{
+			"name": "GET /api/controlescolar/reporte/:materiaId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/maestro/materias",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/maestro/materias",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"maestro",
+						"materias"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@gmail.com\", \n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/controlescolar/reporte",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/controlescolar/asignacion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sIjoiQ09OVFJPTF9FU0NPTEFSIiwibm9tYnJlIjoiQWRtaW4gQ29udHJvbCBFc2NvbGFyIiwiaWF0IjoxNzY1NTE1MjIxLCJleHAiOjE3NjU1NDQwMjF9.KAzeTdvxEfl5K-zR8JQsV-QXWYE53AZVys4DFEhI1t0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"maestro_id\": 1,\n    \"materia_id\": 1 \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/controlescolar/asignacion",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"controlescolar",
+						"asignacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/controlescolar/materias",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sIjoiQ09OVFJPTF9FU0NPTEFSIiwibm9tYnJlIjoiQWRtaW4gQ29udHJvbCBFc2NvbGFyIiwiaWF0IjoxNzY1Nzc3OTU0LCJleHAiOjE3NjU4MDY3NTR9.jXsO1CMwPXgrJsjL1_W2K3aGvb0yaYtJXpCkGrjNVdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/controlescolar/materias",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"controlescolar",
+						"materias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /api/controlescolar/calificaciones/:materiaId/:alumnoId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sIjoiQ09OVFJPTF9FU0NPTEFSIiwibm9tYnJlIjoiQWRtaW4gQ29udHJvbCBFc2NvbGFyIiwiaWF0IjoxNzY1Nzc3OTU0LCJleHAiOjE3NjU4MDY3NTR9.jXsO1CMwPXgrJsjL1_W2K3aGvb0yaYtJXpCkGrjNVdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/controlescolar/calificaciones/1/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"controlescolar",
+						"calificaciones",
+						"1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/controlescolar/calificaciones/:materiaId/:alumnoId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sIjoiQ09OVFJPTF9FU0NPTEFSIiwibm9tYnJlIjoiQWRtaW4gQ29udHJvbCBFc2NvbGFyIiwiaWF0IjoxNzY1Nzc3OTU0LCJleHAiOjE3NjU4MDY3NTR9.jXsO1CMwPXgrJsjL1_W2K3aGvb0yaYtJXpCkGrjNVdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/controlescolar/calificaciones/1/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"controlescolar",
+						"calificaciones",
+						"1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
